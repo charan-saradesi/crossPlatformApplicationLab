@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Profile Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🔹 1. Image Card -->
+  <ion-card>
+    <img src="../../assets/img.png" alt="banner" class="banner-img">
+
+    <ion-card-header>
+      <ion-card-subtitle>Travel</ion-card-subtitle>
+      <ion-card-title>Explore Nature</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Discover beautiful places and enjoy your journey with us.
+    </ion-card-content>
+
+    <!-- Buttons aligned properly -->
+    <ion-row class="ion-justify-content-around ion-padding-bottom">
+      <ion-button fill="outline">Share</ion-button>
+      <ion-button fill="outline">Explore</ion-button>
+    </ion-row>
+  </ion-card>
+
+  <!-- 🔹 2. List Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Top Places</ion-card-title>
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        Goa
+      </ion-item>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        Manali
+      </ion-item>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        Kerala
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <!-- 🔹 3. Profile Section -->
+  <ion-grid>
+    <ion-row class="ion-text-center ion-align-items-center">
+
+      <!-- Avatar centered -->
+      <ion-col size="12">
+        <ion-avatar class="profile-avatar">
+          <img src="../../assets/img_1.png" alt="profile">
+        </ion-avatar>
+        <h2>User Profile</h2>
+      </ion-col>
+
+      <!-- Stats evenly spaced -->
+      <ion-col size="4">
+        <h3>150</h3>
+        <p>Posts</p>
+      </ion-col>
+      <ion-col size="4">
+        <h3>2K</h3>
+        <p>Followers</p>
+      </ion-col>
+      <ion-col size="4">
+        <h3>180</h3>
+        <p>Following</p>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <!-- 🔹 4. Responsive Form -->
+  <ion-grid>
+    <ion-row>
+
+      <ion-col size="12" sizeMd="6">
+        <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" sizeMd="6">
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" sizeMd="6">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" sizeMd="6">
+        <ion-item>
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input type="tel"></ion-input>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

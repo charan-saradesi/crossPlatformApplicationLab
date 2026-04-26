@@ -1,0 +1,73 @@
+/* Background */
+.bg {
+  --background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+}
+
+/* Global text fix */
+ion-content {
+  --color: #222;
+}
+
+/* Profile Card */
+.profile-card {
+  text-align: center;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  color: #222;
+}
+
+.avatar {
+  width: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-card h2 {
+  color: #111;
+}
+
+.profile-card p {
+  color: #555;
+}
+
+/* Stats */
+.stat-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  color: #333;
+}
+
+.stat-card h2 {
+  color: #4caf50;
+  margin: 0;
+}
+
+.stat-card p {
+  color: #666;
+}
+
+/* Activity */
+.activity-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  color: #333;
+}
+
+.activity-card li {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Button fix */
+ion-button {
+  --color: #000;
+}

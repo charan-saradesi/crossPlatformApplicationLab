@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Smart Shopping List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+            background: #d6ffff;
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .container {
+            background: rgb(2, 201, 246);
+            padding: 30px;
+            width: 380px;
+            border-radius: 20px;
+            box-shadow: 0 0 250px rgba(0,255,255,1);
+            color: #ffffff;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 60%;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        .price-input {
+            width: 30%;
+        }
+
+        button {
+            padding: 9px 14px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background: #ff4b2b;
+            float: right;
+        }
+
+        li {
+            list-style: none;
+            padding: 12px;
+            margin-top: 10px;
+            background: rgba(0, 0, 0, 0.71);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .count {
+            margin-top: 15px;
+            text-align: right;
+            color: black;
+        }
+    </style>
+</head>
+
+<body ng-controller="ShoppingController">
+
+<div class="container">
+
+    <h2>🛍 Neon Shopping List</h2>
+
+    <!-- INPUTS -->
+    <input type="text" ng-model="itemName" placeholder="Item name...">
+    <input type="number" ng-model="itemPrice" placeholder="Price" class="price-input">
+    <button ng-click="addItem()">Add</button>
+
+    <!-- LIST -->
+    <ul>
+        <li ng-repeat="item in list track by $index">
+            {{item.name}} - ₹{{item.price}}
+            <button class="delete-btn" ng-click="removeItem($index)">✖</button>
+        </li>
+    </ul>
+
+    <!-- EMPTY -->
+    <div ng-if="list.length === 0">
+        Your list is empty...
+    </div>
+
+    <!-- COUNT -->
+    <div class="count">
+        Items: {{list.length}}
+    </div>
+
+    <!-- TOTAL PRICE -->
+    <div class="count">
+        Total: ₹{{getTotal()}}
+    </div>
+
+</div>
+
+<script>
+    var app = angular.module("myApp", []);
+
+    app.service("ShoppingService", function () {
+        var items = [];
+
+        this.addItem = function (item) {
+            items.push(item);
+        };
+
+        this.getItems = function () {
+            return items;
+        };
+
+        this.removeItem = function (index) {
+            items.splice(index, 1);
+        };
+    });
+
+    app.controller("ShoppingController", function ($scope, ShoppingService) {
+
+        $scope.list = ShoppingService.getItems();
+
+        $scope.addItem = function () {
+            if ($scope.itemName && $scope.itemPrice) {
+                var newItem = {
+                    name: $scope.itemName,
+                    price: $scope.itemPrice
+                };
+
+                ShoppingService.addItem(newItem);
+
+                $scope.itemName = "";
+                $scope.itemPrice = "";
+            }
+        };
+
+        $scope.removeItem = function (index) {
+            ShoppingService.removeItem(index);
+        };
+
+        // TOTAL CALCULATION
+        $scope.getTotal = function () {
+            var total = 0;
+            for (var i = 0; i < $scope.list.length; i++) {
+                total += parseFloat($scope.list[i].price);
+            }
+            return total;
+        };
+    });
+</script>
+
+</body>
+</html>

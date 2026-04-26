@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Smart Shopping List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body{
+            margin:0;
+            font-family:Segoe UI;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            display:flex;
+            justify-content:center;
+            align-items:center;height:100vh}
+        .container{
+            background:rgba(255,255,255,0.1);
+            padding:30px;border-radius:20px;
+            backdrop-filter:blur(15px);
+            width:400px;
+            color:white;
+            box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+        h2{
+            text-align:center;
+            margin-bottom:20px}
+        input{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+            border:none;
+            border-radius:10px;
+            outline:none}
+        button{
+            width:100%;
+            padding:10px;
+            border:none;
+            border-radius:10px;
+            background:#00c6ff;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s}
+        button:hover{
+            background:#0072ff;
+            transform:scale(1.05)}
+        ul{
+            list-style:none;
+            padding:0;
+            margin-top:15px}
+        li{
+            background:rgba(255,255,255,0.2);
+            padding:10px;
+            border-radius:10px;
+            margin-bottom:8px;
+            display:flex;
+            justify-content:space-between}
+        .total{
+            text-align:center;
+            margin-top:15px;
+            font-size:20px;
+            font-weight:bold}
+    </style>
+</head>
+<body ng-controller="myCtrl">
+<div class="container">
+    <h2>Smart Shopping List</h2>
+    <input type="text" ng-model="itemName" placeholder="Enter item name">
+    <input type="number" ng-model="itemQty" placeholder="Enter quantity">
+    <button ng-click="addItem()">Add Item</button>
+    <ul>
+        <li ng-repeat="item in list">
+            <span>{{item.name}} ({{item.qty}})</span>
+
+        </li>
+    </ul>
+
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+        $scope.list=[];
+        $scope.total=0;
+        var prices={rice:60,milk:30,bread:40,egg:6,apple:20};
+        $scope.addItem=function(){
+            var p=prices[$scope.itemName.toLowerCase()]||0;
+            $scope.list.push({name:$scope.itemName,qty:$scope.itemQty,price:p});
+            $scope.total+=p*$scope.itemQty;
+            $scope.itemName="";
+            $scope.itemQty="";
+        };
+    });
+</script>
+</body>
+</html>

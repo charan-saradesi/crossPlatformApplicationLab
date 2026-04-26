@@ -1,0 +1,120 @@
+<!-- home.page.html — Dark Editorial UI -->
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <div class="toolbar-inner">
+      <span class="toolbar-dot"></span>
+      <ion-title class="toolbar-title">FIELDKIT</ion-title>
+      <span class="toolbar-sub">v1.0</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="dark-content">
+
+  <div class="page-wrapper">
+
+    <!-- ── FIREBASE SECTION ─────────────────────────────── -->
+    <section class="panel panel--db">
+      <div class="panel-label">01 / DATABASE</div>
+      <h2 class="panel-heading">Live Array Store</h2>
+      <p class="panel-desc">Entries sync instantly across all open sessions via Firebase Realtime Database.</p>
+
+      <div class="input-row">
+        <ion-input
+          [(ngModel)]="newItem"
+          placeholder="New entry…"
+          class="fk-input"
+          [clearInput]="true"
+        ></ion-input>
+        <button class="fk-btn fk-btn--accent" (click)="saveItem()">
+          <ion-icon name="add-outline"></ion-icon>
+          Push
+        </button>
+      </div>
+
+      <div class="entry-list">
+        <div class="entry-list-header">
+          <span class="entry-count">{{ items.length }} entries</span>
+          <span class="entry-live-dot"></span>
+          <span class="entry-live-label">LIVE</span>
+        </div>
+
+        <div *ngFor="let item of items; let i = index" class="entry-row">
+          <span class="entry-index">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <span class="entry-name">{{ item.name }}</span>
+          <span class="entry-time">{{ item.timestamp | date: 'HH:mm' }}</span>
+        </div>
+
+        <div *ngIf="items.length === 0" class="entry-empty">
+          <ion-icon name="cube-outline"></ion-icon>
+          <span>No entries yet</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CAMERA SECTION ───────────────────────────────── -->
+    <section class="panel panel--cam">
+      <div class="panel-label">02 / CAMERA</div>
+      <h2 class="panel-heading">Capture</h2>
+      <p class="panel-desc">Access the device camera or photo library to capture and preview images.</p>
+
+      <button class="fk-btn fk-btn--secondary full-width" (click)="takePicture()">
+        <ion-icon name="aperture-outline"></ion-icon>
+        Open Camera
+      </button>
+
+      <div *ngIf="photo" class="photo-frame">
+        <div class="photo-frame-corner tl"></div>
+        <div class="photo-frame-corner tr"></div>
+        <div class="photo-frame-corner bl"></div>
+        <div class="photo-frame-corner br"></div>
+        <img [src]="photo" class="photo-preview" alt="Captured photo" />
+        <div class="photo-tag">CAPTURED</div>
+      </div>
+
+      <div *ngIf="!photo" class="photo-placeholder">
+        <ion-icon name="image-outline"></ion-icon>
+        <span>No photo yet</span>
+      </div>
+    </section>
+
+    <!-- ── GEOLOCATION SECTION ──────────────────────────── -->
+    <section class="panel panel--geo">
+      <div class="panel-label">03 / GEOLOCATION</div>
+      <h2 class="panel-heading">Coordinates</h2>
+      <p class="panel-desc">Read GPS position using the Capacitor Geolocation plugin with high-accuracy mode.</p>
+
+      <button
+        class="fk-btn fk-btn--tertiary full-width"
+        (click)="getLocation()"
+        [disabled]="loadingLocation"
+      >
+        <ion-spinner *ngIf="loadingLocation" name="lines-small"></ion-spinner>
+        <ion-icon *ngIf="!loadingLocation" name="radio-outline"></ion-icon>
+        {{ loadingLocation ? 'Acquiring…' : 'Get Position' }}
+      </button>
+
+      <div *ngIf="location" class="coord-grid">
+        <div class="coord-cell">
+          <span class="coord-key">LAT</span>
+          <span class="coord-val">{{ location.coords.latitude | number: '1.6-6' }}°</span>
+        </div>
+        <div class="coord-cell">
+          <span class="coord-key">LNG</span>
+          <span class="coord-val">{{ location.coords.longitude | number: '1.6-6' }}°</span>
+        </div>
+        <div class="coord-cell coord-cell--wide">
+          <span class="coord-key">ACCURACY</span>
+          <span class="coord-val">±{{ location.coords.accuracy | number: '1.0-0' }}m</span>
+        </div>
+      </div>
+
+      <div *ngIf="!location" class="geo-placeholder">
+        <ion-icon name="earth-outline"></ion-icon>
+        <span>Position unknown</span>
+      </div>
+    </section>
+
+  </div>
+
+</ion-content>

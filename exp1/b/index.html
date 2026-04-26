@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Geolocation & Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<h1>HTML5 APIs Demo</h1>
+<h2>Canvas Drawing</h2>
+<canvas id="myCanvas" width="200" height="100"></canvas>
+<h2>Geolocation</h2>
+<button onclick="getLocation()">Get Location</button>
+<p id="location-output">Coordinates will appear here...</p>
+<script>
+    // Part 1: Drawing on Canvas
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(10, 10, 150, 75); // Draw a red rectangle
+
+    // Part 2: Geolocation API
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            document.getElementById("location-output").innerHTML =
+                "Geolocation is not supported by this browser.";
+        }
+    }
+    function showPosition(position) {
+        document.getElementById("location-output").innerHTML =
+            "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+    function showError(error) {
+        const output = document.getElementById("location-output");
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                output.innerHTML = "User denied the request for Geolocation.";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                output.innerHTML = "Location information is unavailable.";
+                break;
+            case error.TIMEOUT:
+                output.innerHTML = "The request to get user location timed out.";
+                break;
+            case error.UNKNOWN_ERROR:
+                output.innerHTML = "An unknown error occurred.";
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>

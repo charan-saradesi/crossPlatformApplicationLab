@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>My Tasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding premium-bg">
+
+  <!-- Center container -->
+  <div class="container">
+
+    <!-- Input Card -->
+    <div class="card input-card">
+      <ion-item lines="none">
+        <ion-input
+          [(ngModel)]="newTask"
+          placeholder="Add a task...">
+        </ion-input>
+
+        <ion-button
+          class="add-btn"
+          (click)="addTask()">
+          ADD
+        </ion-button>
+      </ion-item>
+    </div>
+
+    <!-- Task List -->
+    <div *ngFor="let task of tasks; let i = index" class="card task-card">
+
+      <div class="task-text">
+        {{ task }}
+      </div>
+
+      <ion-button
+        fill="clear"
+        color="danger"
+        (click)="deleteTask(i)">
+        ✕
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</ion-content>

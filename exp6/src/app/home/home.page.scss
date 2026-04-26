@@ -1,0 +1,64 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+/* Banner image full width */
+.banner-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* keeps image nicely cropped */
+}
+
+/* Center profile avatar */
+.profile-avatar {
+  margin: 10px auto;
+  width: 100px;
+  height: 100px;
+}
+
+/* Center text below avatar */
+h2 {
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* Stats alignment */
+ion-col h3 {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+ion-col p {
+  margin: 0;
+  color: gray;
+}
+
+/* Buttons spacing */
+ion-card ion-row {
+  justify-content: space-around;
+  padding-bottom: 10px;
+}

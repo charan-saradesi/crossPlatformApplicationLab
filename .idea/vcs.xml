@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/exp2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp6" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp7" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp8" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp8/ios/DerivedData/71F85BC0-E026-46E2-A20A-CBD2993A5DE7/SourcePackages/checkouts/capacitor-swift-pm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp8/ios/DerivedData/71F85BC0-E026-46E2-A20A-CBD2993A5DE7/SourcePackages/checkouts/ion-ios-camera" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/exp8/ios/DerivedData/71F85BC0-E026-46E2-A20A-CBD2993A5DE7/SourcePackages/checkouts/ion-ios-geolocation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/finalproject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lab5" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/myTodoApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/student-register" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/todo" vcs="Git" />
+  </component>
+</project>

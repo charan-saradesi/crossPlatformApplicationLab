@@ -1,0 +1,72 @@
+/* Background (softer premium gradient) */
+.premium-bg {
+  --background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+/* Center container */
+.container {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Card (clean + softer shadow) */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect (premium feel) */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Fix ion-item spacing */
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+/* Input styling (clean + modern) */
+ion-input {
+  --background: #ecfdf5; /* soft green */
+  --color: #111;
+  border-radius: 10px;
+  padding-left: 12px;
+  height: 42px;
+  font-size: 14px;
+}
+
+/* Button (better proportions) */
+.add-btn {
+  --background: #22c55e;
+  --border-radius: 10px;
+  margin-left: 10px;
+  height: 36px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Task row */
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Task text */
+.task-text {
+  font-size: 15px;
+  color: #1f2937;
+}
+
+/* Delete button nicer spacing */
+ion-button[color="danger"] {
+  margin-left: 10px;
+}
